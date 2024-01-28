@@ -24,12 +24,12 @@ print("Supabase URL: ", supabase_url)
 print("Supabase Key: ", supabase_key)
 supabase = create_client(supabase_url, supabase_key)
 
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    return response
+# @app.after_request
+# def after_request(response):
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+#     return response
 
 @app.route('/generate-podcast', methods=['POST'])
 def generate_podcast_endpoint():
