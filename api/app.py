@@ -15,7 +15,7 @@ load_dotenv(dotenv_path=env_path)
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/podcasts": {"origins": "*"}})  # Adjust the origins as needed
+# CORS(app, resources={r"/podcasts": {"origins": "*"}})  # Adjust the origins as needed
 
 # Initialize Supabase client
 supabase_url = os.getenv('SUPABASE_URL')
@@ -91,7 +91,5 @@ def return_rss():
     rss = "https://gvkfpctispwgsrwbpfgu.supabase.co/storage/v1/object/public/mydailydigest_rss/test_function.rss"
     return rss
 
-
-
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run()
