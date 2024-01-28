@@ -215,7 +215,7 @@ def get_podcasts():
         if response:
             return podcasts, 200
     except Exception as e:
-        error(f"An exception occurred: {e}")
+        (f"An exception occurred: {e}")
         return {"error": str(e)}, 500
     
 def get_podcast_by_id(podcast_id):

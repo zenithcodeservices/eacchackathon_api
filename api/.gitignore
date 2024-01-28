@@ -1,5 +1,10 @@
 /.env.local
 *.env.local
 *.env
-
+./venv/
+/venv/
+*/venv
+./venv/*
+venv/*
+venv/
 __pycache__
