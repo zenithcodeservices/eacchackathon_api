@@ -60,6 +60,6 @@ def generate_rss(id):
     return rss
 
 # Create a function to generate a QR code
-def generate_qr(url):
-    qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url
+def generate_qr_url():
+    qr_url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gvkfpctispwgsrwbpfgu.supabase.co/storage/v1/object/public/mydailydigest_rss/test_function.rss"
     return qr_url

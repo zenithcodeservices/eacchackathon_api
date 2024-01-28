@@ -4,10 +4,11 @@ from dotenv import load_dotenv
 import supabase
 from flask_cors import CORS
 from podcast_generator import youtube_summary, podcast_intro, generate_podcast, get_podcasts, get_podcast_by_id
+from rssfeed import generate_rss, generate_qr_url
 from supabase import create_client, Client
 
 from dotenv import load_dotenv
-env_path = './.env.local'
+env_path = '.env.local'
 # import your OpenAI key
 # Load the environment variables from the specified .env file
 load_dotenv(dotenv_path=env_path)
@@ -73,13 +74,23 @@ def get_podcast_list():
     podcasts, status = get_podcasts()
     return jsonify(podcasts), status
 
-@app.route('/podcast/<int:podcast_id>', methods=['GET'])
-def get_podcast(podcast_id):
-    podcast, error_message = get_podcast_by_id(podcast_id)
-    if podcast:
-        return jsonify(podcast), 200
-    else:
-        return jsonify({"error": error_message}), 500 if error_message else 404
+@app.route('/rssfeed', methods=['GET'])
+def get_rssfeed(id):
+    rss = generate_rss(id)
+    return rss
+    
+@app.route('/qrcode', methods=['GET'])
+def generate_qr():
+    rss_url = "http://localhost:3000/connectrss"
+
+    qrcode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+rss_url
+    return qrcode
+
+@app.route('/rss', methods=['GET'])
+def return_rss():
+    rss = "https://gvkfpctispwgsrwbpfgu.supabase.co/storage/v1/object/public/mydailydigest_rss/test_function.rss"
+    return rss
+
 
 
 if __name__ == "__main__":
