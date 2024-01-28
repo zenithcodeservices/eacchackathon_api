@@ -16,7 +16,7 @@ import uuid
 import json
 
 from dotenv import load_dotenv
-env_path = './.env.local'
+env_path = '.env.local'
 # import your OpenAI key
 # Load the environment variables from the specified .env file
 load_dotenv(dotenv_path=env_path)
